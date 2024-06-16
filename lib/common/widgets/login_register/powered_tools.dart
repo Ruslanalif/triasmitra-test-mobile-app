@@ -13,6 +13,8 @@ class MainPoweredTools extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                height: 45,
+                width: 45,
                 decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(100)),
                 child: IconButton(onPressed: (){}, icon: 
                   const Image(image: AssetImage(MainImages.icMysql), width: MainSize.iconMd * 1.2, height: MainSize.iconMd * 1.2,)
@@ -20,6 +22,8 @@ class MainPoweredTools extends StatelessWidget {
               ),
               const SizedBox(width: MainSize.spaceBtwItems,),
               Container(
+                height: 45,
+                width: 45,
                 decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(100)),
                 child: IconButton(onPressed: (){}, icon: 
                   const Image(image: AssetImage(MainImages.icFlutter), width: MainSize.iconMd * 1.2, height: MainSize.iconMd * 1.2,)
@@ -27,6 +31,8 @@ class MainPoweredTools extends StatelessWidget {
               ),
               const SizedBox(width: MainSize.spaceBtwItems,),
               Container(
+                height: 45,
+                width: 45,
                 decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(100)),
                 child: IconButton(onPressed: (){}, icon: 
                   const Image(image: AssetImage(MainImages.icLaravel), width: MainSize.iconMd * 1.2, height: MainSize.iconMd * 1.2,)

@@ -15,12 +15,25 @@ class MainHttpClient{
   // Post Request 
 
   static Future<Map<String, dynamic>> post(String endpoint, dynamic data, String token) async{
+    // print("masuk sini");
     final response = await http.post(
       Uri.parse('$_baseUrl/$endpoint'),
       headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $token'},
       body: json.encode(data),
     );
-    return _handleResponse(response);
+    return json.decode(response.body);
+    // return _handleResponse(response); 
+  }
+
+  static Future<String> postStr(String endpoint, dynamic data, String token) async{
+    // print("masuk sini");
+    final response = await http.post(
+      Uri.parse('$_baseUrl/$endpoint'),
+      headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $token'},
+      body: json.encode(data),
+    );
+    // print(json.decode(response.body));
+    return response.toString();
   }
 
   // Delete Request 

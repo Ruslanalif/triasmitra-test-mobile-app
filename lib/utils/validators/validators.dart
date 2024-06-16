@@ -14,4 +14,13 @@ class MainValidator{
     return null;
 
   }
+
+  static String? isRequired(String? value, String fieldName){
+    if(value == null || value.isEmpty){
+      return '$fieldName is Required';
+    }
+
+    return null;
+
+  }
 }
