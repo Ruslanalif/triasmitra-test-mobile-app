@@ -51,6 +51,8 @@ dependencies:
 
   #------ UI library use --------#
   flutter_native_splash: ^2.4.0
+  shared_preferences: ^2.2.3
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

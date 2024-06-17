@@ -21,6 +21,7 @@ class MainHttpClient{
       headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $token'},
       body: json.encode(data),
     );
+    // print(response.body.toString());
     return json.decode(response.body);
     // return _handleResponse(response); 
   }
