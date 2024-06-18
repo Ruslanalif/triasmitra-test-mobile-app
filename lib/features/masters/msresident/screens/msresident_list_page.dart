@@ -1,9 +1,11 @@
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 import 'package:triasmitra_mobile_app/features/masters/msresident/models/msresident_model.dart';
+import 'package:triasmitra_mobile_app/features/masters/msresident/screens/msresident_form.dart';
+import 'package:triasmitra_mobile_app/features/masters/msresident/screens/msresident_form_edit.dart';
+import 'package:triasmitra_mobile_app/features/masters/msresident/screens/msresident_view.dart';
 import 'package:triasmitra_mobile_app/utils/helpers/helper_functions.dart';
 import 'package:triasmitra_mobile_app/utils/helpers/session_service.dart';
 import 'package:triasmitra_mobile_app/utils/http/http_client.dart';
@@ -17,7 +19,6 @@ class MsResidentListPage extends StatefulWidget {
 class _MsResidentListPageState extends State<MsResidentListPage> {
   List<MsResident> residents = [];
   final SessionService _sessionService = SessionService();
-  String _sessionData = 'No session data';
   String _token = 'Loading...';
   String _id = 'Loading...';
   // String _username = 'Loading...';
@@ -85,7 +86,6 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
       };
       // final Map<String, String> data = LoginModel(id: 1, firstName: firstName.text.trim(), lastName: lastName.text.trim(), username: username.text.trim(), password: password.text.trim(), email: email.text.trim(), phone: phone.text.trim());
 
-      // Ganti dengan token Anda
       final String token = _token;
 
       // Gunakan fungsi helper untuk mengirim data
@@ -117,6 +117,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
         title: Text('Resident List Active'),
       ),
       body: ListView.builder(
+        padding: EdgeInsets.only(bottom: 60),
         itemCount: residents.length,
         itemBuilder: (context, index) {
           final resident = residents[index];
@@ -156,9 +157,15 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
                   switch (value) {
                     case 'edit':
                       // Navigasi ke halaman edit
+                      Get.to(() => MsresidentFormEdit(), arguments: {
+                        'id': resident.id,
+                      },);
                       break;
                     case 'view':
                       // Navigasi ke halaman view
+                      Get.to(() => MsresidentView(), arguments: {
+                        'id': resident.id,
+                      },);
                       break;
                     case 'delete':
                       _showDeleteConfirmationDialog(resident.id);
@@ -181,6 +188,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Navigasi ke halaman add
+          Get.to(() => const MsresidentForm());
         },
         child: Icon(Icons.add),
       ),
@@ -210,7 +218,6 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
                 };
                 // final Map<String, String> data = LoginModel(id: 1, firstName: firstName.text.trim(), lastName: lastName.text.trim(), username: username.text.trim(), password: password.text.trim(), email: email.text.trim(), phone: phone.text.trim());
 
-                // Ganti dengan token Anda
                 final String token = _token;
 
                 // Gunakan fungsi helper untuk mengirim data

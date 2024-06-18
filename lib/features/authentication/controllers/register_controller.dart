@@ -35,7 +35,6 @@ class RegisterController extends GetxController{
       };
       // final Map<String, String> data = LoginModel(id: 1, firstName: firstName.text.trim(), lastName: lastName.text.trim(), username: username.text.trim(), password: password.text.trim(), email: email.text.trim(), phone: phone.text.trim());
 
-      // Ganti dengan token Anda
       final String token = 'Kosong';
 
       // Gunakan fungsi helper untuk mengirim data

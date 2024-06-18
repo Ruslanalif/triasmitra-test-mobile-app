@@ -12,6 +12,11 @@ class MainHttpClient{
     return _handleResponse(response);
   }
 
+  static Future<Map<String, dynamic>> getDio(String endpoint) async{
+    final response = await http.get(Uri.parse('$endpoint'));
+    return _handleResponse(response);
+  }
+
   // Post Request 
 
   static Future<Map<String, dynamic>> post(String endpoint, dynamic data, String token) async{
@@ -23,6 +28,60 @@ class MainHttpClient{
     );
     // print(response.body.toString());
     return json.decode(response.body);
+    // return _handleResponse(response); 
+  }
+
+  static Future<Map<String, dynamic>> postwImage(String endpoint, dynamic data, String token, dynamic _image) async{
+    // print("masuk sini");
+
+    // Ambil token dari session atau state management yang digunakan
+    print('masuk sini');
+    final uri = Uri.parse('$_baseUrl/$endpoint');
+    final request = http.MultipartRequest('POST', uri);
+
+    // Tambahkan headers
+    request.headers['Content-Type'] = 'multipart/form-data';
+    request.headers['Authorization'] = 'Bearer $token';
+
+    // Tambahkan field data
+    data.forEach((key, value) {
+      request.fields[key] = value;
+    });
+    // request.fields['IDCardNumber'] = _idCardNumberController.text;
+    // request.fields['Name'] = _nameController.text;
+    // request.fields['BirthDay'] = _birthDayController.text;
+    // request.fields['BirthPlace'] = _birthPlaceController.text;
+    // request.fields['Gender'] = 'L'; // Sesuaikan dengan nilai yang valid
+    // request.fields['Province'] = '32'; // Sesuaikan dengan nilai yang valid
+    // request.fields['Regency'] = '3201'; // Sesuaikan dengan nilai yang valid
+    // request.fields['District'] = '3201120'; // Sesuaikan dengan nilai yang valid
+    // request.fields['Village'] = '3201120007'; // Sesuaikan dengan nilai yang valid
+    // request.fields['Address'] = _addressController.text;
+    // request.fields['Religion'] = _religionController.text;
+    // request.fields['MaritalStatus'] = _maritalStatusController.text;
+    // request.fields['Employment'] = _employmentController.text;
+    // request.fields['Citizenship'] = _citizenshipController.text;
+    // request.fields['FgActive'] = 'Y'; // Sesuaikan dengan nilai yang valid
+    // request.fields['UserID'] = '1'; // Sesuaikan dengan nilai yang valid
+    print('masuk sini 1');
+
+    // Tambahkan file gambar jika ada
+    if (_image != null) {
+      final imageStream = http.ByteStream(_image!.openRead());
+      final imageLength = await _image!.length();
+      final multipartFile = http.MultipartFile('FileURL', imageStream, imageLength, filename: _image!.path.split('/').last);
+      request.files.add(multipartFile);
+    }
+    print('masuk sini 2');
+
+    final response = await request.send();
+    // print(response.body.toString());
+    print('masuk sini 3');
+
+    final ressBody = await response.stream.bytesToString();
+    print(ressBody);
+
+    return json.decode(ressBody);
     // return _handleResponse(response); 
   }
 
