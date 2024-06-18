@@ -57,7 +57,7 @@ class MainRegisterForm extends StatelessWidget {
                 Obx(
                   () => TextFormField(
                     controller: controller.password,
-                    validator: (value) => MainValidator.isRequired(value, 'Password'),
+                    validator: (value) => MainValidator.passwordValidator(value),
                     obscureText: controller.hidePassword.value,
                     decoration: InputDecoration(
                       labelText: "Password",
@@ -72,7 +72,7 @@ class MainRegisterForm extends StatelessWidget {
                 const SizedBox(height: MainSize.spaceBtwItems * 0.7,),
                 TextFormField(
                   controller: controller.email,
-                  validator: (value) => MainValidator.isRequired(value, 'Email'),
+                  validator: (value) => MainValidator.validateEmail(value),
                   
                   decoration: const InputDecoration(
                     labelText: "Email",
@@ -82,8 +82,7 @@ class MainRegisterForm extends StatelessWidget {
                 const SizedBox(height: MainSize.spaceBtwItems * 0.7,),
                 TextFormField(
                   controller: controller.phone,
-                  validator: (value) => MainValidator.isRequired(value, 'Phone'),
-                  
+                  validator: (value) => MainValidator.phoneNumberValidator(value),
                   decoration: const InputDecoration(
                     labelText: "Phone",
                     prefixIcon: Icon(Iconsax.user)

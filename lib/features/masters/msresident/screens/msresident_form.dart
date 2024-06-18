@@ -197,7 +197,7 @@ class _MsresidentFormState extends State<MsresidentForm> {
                   children: [
                     TextFormField(
                       controller: controller.idCardNumber,
-                      validator: (value) => MainValidator.isRequired(value, 'NIK'),
+                      validator: (value) => MainValidator.nikValidator(value),
                       decoration: const InputDecoration(
                         labelText: "16 Digit NIK",
                         prefixIcon: Icon(Iconsax.card)
@@ -480,7 +480,7 @@ class _MsresidentFormState extends State<MsresidentForm> {
                       ],
                     ),
                     const SizedBox(height: MainSize.spaceBtwItems * 1.7,),
-                    SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => controller.store(true, '',_token, _id, _image, selectedProvince, selectedRegency, selectedDistrict, selectedVillage, selectedGender, DateFormat("yyyy-MM-dd").format(_selectedDate!)), child: const Text("Submit")),),
+                    SizedBox(width: double.infinity, child: ElevatedButton(onPressed: () => controller.store(true, '',_token, _id, _image, selectedProvince, selectedRegency, selectedDistrict, selectedVillage, selectedGender, _selectedDate != null ? DateFormat("yyyy-MM-dd").format(_selectedDate!): ''), child: const Text("Submit")),),
                     const SizedBox(height: MainSize.spaceBtwItems * 3.7,),
                   ],
                 ),

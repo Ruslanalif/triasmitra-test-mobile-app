@@ -261,7 +261,7 @@ class _MsresidentFormEditState extends State<MsresidentFormEdit> {
                     TextFormField(
                       readOnly: true,
                       controller: controller.idCardNumber,
-                      validator: (value) => MainValidator.isRequired(value, 'NIK'),
+                      validator: (value) => MainValidator.nikValidator(value),
                       decoration: const InputDecoration(
                         labelText: "16 Digit NIK",
                         prefixIcon: Icon(Iconsax.card)

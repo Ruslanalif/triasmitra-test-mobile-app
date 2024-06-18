@@ -26,6 +26,19 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
   // String _email = 'Loading...';
   // String _phone = 'Loading...';
 
+
+  final List<int> selectedItems = [];
+
+  void _onLongPress(int id) {
+    setState(() {
+      if (selectedItems.contains(id)) {
+        selectedItems.remove(id);
+      } else {
+        selectedItems.add(id);
+      }
+    });
+  }
+  
   @override
   void initState() {
     super.initState();

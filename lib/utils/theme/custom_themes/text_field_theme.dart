@@ -40,7 +40,7 @@ class MainTextFormFieldTheme{
     labelStyle: const TextStyle().copyWith(fontSize: 14.0, color: Colors.white),
     hintStyle: const TextStyle().copyWith(fontSize: 14.0, color: Colors.white),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: Colors.black.withOpacity(0.8)),
+    floatingLabelStyle: const TextStyle().copyWith(color: Colors.white.withOpacity(0.8)),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14.0),
       borderSide: const BorderSide(width: 1.0, color: Colors.grey),
