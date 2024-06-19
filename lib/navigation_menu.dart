@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/instance_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:triasmitra_mobile_app/features/masters/home.dart';
+import 'package:triasmitra_mobile_app/features/masters/nonactive.dart';
 import 'package:triasmitra_mobile_app/features/masters/profile.dart';
 import 'package:triasmitra_mobile_app/utils/helpers/helper_functions.dart';
 import 'package:triasmitra_mobile_app/utils/helpers/session_service.dart';
@@ -18,7 +19,7 @@ class NavigationController extends GetxController{
 
   final screen =  [
           const MainHome(),
-          Container(color: Colors.grey,),
+          const MainNonActive(),
           MainProfile(),
         ];
 }

@@ -16,12 +16,12 @@ import 'package:triasmitra_mobile_app/utils/helpers/session_service.dart';
 import 'package:triasmitra_mobile_app/utils/http/http_client.dart';
 
 
-class MsResidentListPage extends StatefulWidget {
+class MsResidentListNonActivePage extends StatefulWidget {
   @override
-  _MsResidentListPageState createState() => _MsResidentListPageState();
+  _MsResidentListNonActivePageState createState() => _MsResidentListNonActivePageState();
 }
 
-class _MsResidentListPageState extends State<MsResidentListPage> {
+class _MsResidentListNonActivePageState extends State<MsResidentListNonActivePage> {
   List<MsResident> residents = [];
   final SessionService _sessionService = SessionService();
   String _token = 'Loading...';
@@ -120,7 +120,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
         'prmLengthData': "100",
         'prmFIlter': "",
         'prmUserID': _id,
-        'prmStatus': "ACT",
+        'prmStatus': "NONACT",
       };
       // final Map<String, String> data = LoginModel(id: 1, firstName: firstName.text.trim(), lastName: lastName.text.trim(), username: username.text.trim(), password: password.text.trim(), email: email.text.trim(), phone: phone.text.trim());
 
@@ -129,7 +129,9 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
       // Gunakan fungsi helper untuk mengirim data
       final response = await MainHttpClient.post('msresidents/get-filter', data, token);
     // final response = await http.get(Uri.parse('YOUR_API_ENDPOINT_HERE'));
-    firstLoad = false;
+    setState(() {
+      firstLoad = false;
+    });
     if (response['xStatus'] == '1') {
       final data = response;
       if (data['xStatus'] == '1') {
@@ -146,6 +148,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
         print('Error: ${data['xMessage']}');
       }
     } else {
+
         setState(() {
           emptyLyst = true;
         });
@@ -159,7 +162,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
     final dark = MainHelperFunction.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Resident List Active'),
+        title: Text('Resident List Non-Active'),
       ),
       // body: ListView.builder(
       //   padding: EdgeInsets.only(bottom: 60),
@@ -280,21 +283,14 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
               },
               label: Row(
                 children: [
-                  Icon(Iconsax.shield_cross),
+                  Icon(Iconsax.check),
                   SizedBox(width: 8),
-                  Text('Non Active'),
+                  Text('Active'),
                 ],
               ),
-              backgroundColor: MainColors.accentColor,
+              backgroundColor: MainColors.primaryColor,
             )
-        : FloatingActionButton(
-        onPressed: () {
-          // Navigasi ke halaman add
-          Get.to(() => const MsresidentForm());
-        },
-        child: Icon(Iconsax.add),
-        backgroundColor: MainColors.primaryColor,
-      ),
+        : null
     );
   }
 
@@ -303,7 +299,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Non-Active?'),
+          title: Text('Active?'),
           content: Text('Item yang Anda pilih akan di non-aktif kan?'),
           actions: <Widget>[
             TextButton(
@@ -318,7 +314,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
                 final ids = selectedItems.join(',');
                 final Map<String, String> data = {
                   'prmIDs': ids,
-                  'prmStatus': "N",
+                  'prmStatus': "Y",
                   'prmUserID': _id,
                 };
                 // final Map<String, String> data = LoginModel(id: 1, firstName: firstName.text.trim(), lastName: lastName.text.trim(), username: username.text.trim(), password: password.text.trim(), email: email.text.trim(), phone: phone.text.trim());
@@ -334,7 +330,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
                   setState(() {
                     selectedItems = [];
                     isSelectionMode = false;
-                    // residents.removeWhere((resident) => resident.id == residentId);
+                    // residents.removeWhere((resident) => resident.id == ids.split(',')[0]);
                     fetchResidents();
                   });
                 }else{
@@ -342,7 +338,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
                 }
                 Navigator.of(context).pop();
               },
-              child: Text('Non-active'),
+              child: Text('active'),
             ),
           ],
         );
@@ -368,7 +364,7 @@ class _MsResidentListPageState extends State<MsResidentListPage> {
               onPressed: () async {
                 final Map<String, String> data = {
                   'prmMode': "Soft",
-                  'prmStatus': "N",
+                  'prmStatus': "D",
                   'prmUserID': _id,
                 };
                 // final Map<String, String> data = LoginModel(id: 1, firstName: firstName.text.trim(), lastName: lastName.text.trim(), username: username.text.trim(), password: password.text.trim(), email: email.text.trim(), phone: phone.text.trim());

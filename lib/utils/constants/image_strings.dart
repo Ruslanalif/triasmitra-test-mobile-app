@@ -13,5 +13,6 @@ class MainImages{
   static const String userImage = "assets/images/user-img.png";
 
   static const String paperFly = "assets/images/paper-fly.gif";
+  static const String searchGif = "assets/images/search.gif";
 
 }
