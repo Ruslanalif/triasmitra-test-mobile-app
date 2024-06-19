@@ -226,7 +226,7 @@ class _MsResidentListNonActivePageState extends State<MsResidentListNonActivePag
                               Icon(Icons.error),
                         )
                       : Image.asset(
-                          'assets/images/user-img.png',
+                          'assets/images/unselected-image.png',
                           width: 60,
                           height: 50,
                           fit: BoxFit.cover,

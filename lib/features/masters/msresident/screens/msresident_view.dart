@@ -121,7 +121,7 @@ class _MsresidentViewState extends State<MsresidentView> {
                               Icon(Icons.error),
                         )
                       : Image.asset(
-                          'assets/images/user-img.png',
+                          'assets/images/unselected-image.png',
                           width: MainHelperFunction.screenWidth() * 0.8,
                           height: MainHelperFunction.screenWidth() * 0.8 * 0.7,
                           fit: BoxFit.cover,
