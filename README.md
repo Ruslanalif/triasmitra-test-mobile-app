@@ -1,16 +1,25 @@
 # triasmitra_mobile_app
 
-A new Flutter project.
+Aplikasi mobile untuk CRUD ID Card .
 
-## Getting Started
+Aplikasi ini dibangun menggunakan flutter dengan struktur pengembangan yang saya rasa efisien dengan mengikuti pedoman dari channel youtube "coding with t". fitur didalam nya mencakup register user, user login, crud masterresident (+ fitur upoad gambar).
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+> Referensi tampilan
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+https://www.youtube.com/@CodingwithT
+```
+> GIthub API
+
+```bash
+https://github.com/Ruslanalif/triasmitra-test-api-laravel/blob/master
+```
+
+> apk file untuk android
+
+```bash
+https://github.com/Ruslanalif/triasmitra-test-mobile-app/blob/main/triasmitra-idcard.apk
+```
+
